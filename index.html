@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural da Gratidão · DP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="ceu" aria-hidden="true"></div>
+
+    <!-- =========================================================
+         TELA DO CELULAR: escrever a mensagem
+    ========================================================== -->
+    <main id="telaEscrever" class="tela" hidden>
+
+        <header class="topo">
+            <div class="icone" aria-hidden="true">🌻</div>
+            <p class="kicker">Time de DP</p>
+            <h1>Mural da <em>Gratidão</em></h1>
+            <p class="sub">Pelo que você é grato(a) no nosso time e no trabalho?</p>
+        </header>
+
+        <form id="formGratidao" class="cartao" autocomplete="off">
+
+            <label for="campoMensagem">Sua mensagem</label>
+            <textarea id="campoMensagem" maxlength="220" rows="4"
+                placeholder="Ex.: Sou grata à Ana, que me ajudou no fechamento da folha 💛" required></textarea>
+            <p class="contador"><span id="contador">0</span>/220</p>
+
+            <label for="campoNome">Seu nome <span class="opcional">(opcional)</span></label>
+            <input id="campoNome" type="text" maxlength="40" placeholder="Deixe em branco para ser anônimo">
+
+            <p class="rotulo">Escolha um símbolo</p>
+            <div class="simbolos" id="simbolos" role="radiogroup" aria-label="Símbolo da mensagem">
+                <button type="button" class="simbolo ativo" data-simbolo="💛" aria-label="Coração">💛</button>
+                <button type="button" class="simbolo" data-simbolo="🌻" aria-label="Girassol">🌻</button>
+                <button type="button" class="simbolo" data-simbolo="🙏" aria-label="Obrigado">🙏</button>
+                <button type="button" class="simbolo" data-simbolo="⭐" aria-label="Estrela">⭐</button>
+                <button type="button" class="simbolo" data-simbolo="🤝" aria-label="Parceria">🤝</button>
+                <button type="button" class="simbolo" data-simbolo="✨" aria-label="Brilho">✨</button>
+            </div>
+
+            <button type="submit" id="botaoEnviar" class="botao">Enviar meu obrigado 💛</button>
+            <p id="erro" class="erro" hidden></p>
+        </form>
+
+        <section id="enviado" class="cartao enviado" hidden>
+            <div class="grande">💛</div>
+            <h2>Obrigado por compartilhar!</h2>
+            <p>Olhe para o telão: sua mensagem já está no mural.</p>
+            <button type="button" id="botaoOutra" class="botao secundario">Escrever outra</button>
+        </section>
+
+        <a class="link-telao" href="?telao=1">Abrir o telão do mural</a>
+    </main>
+
+
+    <!-- =========================================================
+         TELÃO: mensagens aparecendo ao vivo
+    ========================================================== -->
+    <main id="telaTelao" class="telao" hidden>
+
+        <header class="telao-topo">
+            <div>
+                <p class="kicker">Time de DP</p>
+                <h1>Mural da <em>Gratidão</em></h1>
+                <p class="sub">Pelo que você é grato(a) no nosso time e no trabalho?</p>
+            </div>
+
+            <div class="telao-qr">
+                <img src="qr.png" alt="QR code para escrever no mural">
+                <div>
+                    <p class="qr-texto">Aponte a câmera e deixe seu obrigado</p>
+                    <p class="contagem"><span id="totalLuzes">0</span> mensagens</p>
+                </div>
+            </div>
+        </header>
+
+        <div id="mural" class="mural" aria-live="polite"></div>
+
+        <p id="vazio" class="vazio">As primeiras mensagens vão aparecer aqui 💛</p>
+
+        <footer class="telao-rodape">
+            <button type="button" id="botaoExportar" class="botao pequeno">Baixar mensagens</button>
+            <span class="dica">Dica: passe o mouse em uma mensagem para ocultá-la do mural.</span>
+        </footer>
+    </main>
+
+
+    <!-- =========================================================
+         FIREBASE (mesmo projeto do app da dinâmica)
+    ========================================================== -->
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC6XYW6l0BSiJTSrYjxfjN9b7ivdTrEkpM",
+            authDomain: "desafio-2-verdades.firebaseapp.com",
+            databaseURL: "https://desafio-2-verdades-default-rtdb.firebaseio.com",
+            projectId: "desafio-2-verdades",
+            storageBucket: "desafio-2-verdades.firebasestorage.app",
+            messagingSenderId: "991201823044",
+            appId: "1:991201823044:web:887e924ca4de4c7fe62f11"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

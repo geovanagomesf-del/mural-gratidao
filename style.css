@@ -1,0 +1,423 @@
+/* =========================================================
+   MURAL DA GRATIDÃO · tema claro e acolhedor
+========================================================= */
+
+:root {
+    --fundo: #FBF6EE;
+    --papel: #FFFFFF;
+    --tinta: #2E2A26;
+    --tinta-suave: #6F665C;
+    --borda: #EADFCF;
+    --destaque: #E07A3F;
+    --destaque-escuro: #C4612A;
+    --sage: #7FA77F;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.ceu {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(520px 420px at 8% 0%, rgba(255, 214, 165, .55), transparent 70%),
+        radial-gradient(480px 380px at 100% 15%, rgba(214, 232, 208, .6), transparent 70%),
+        radial-gradient(520px 420px at 60% 110%, rgba(250, 210, 214, .45), transparent 70%);
+}
+
+h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    color: var(--tinta);
+    letter-spacing: -.5px;
+    line-height: 1.05;
+}
+
+h1 em {
+    font-style: italic;
+    color: var(--destaque);
+}
+
+.kicker {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+}
+
+.sub {
+    color: var(--tinta-suave);
+}
+
+
+/* ---------------- CELULAR ---------------- */
+
+.tela {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 36px 16px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.topo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.icone {
+    font-size: 40px;
+    animation: balancar 3s ease-in-out infinite;
+}
+
+.topo h1 {
+    font-size: 42px;
+}
+
+.topo .sub {
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.cartao {
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    border-radius: 22px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(110, 80, 40, .08);
+}
+
+label,
+.rotulo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--tinta-suave);
+}
+
+.opcional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+textarea,
+input {
+    width: 100%;
+    font: inherit;
+    font-size: 17px;
+    color: var(--tinta);
+    background: #FFFCF7;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+textarea:focus,
+input:focus {
+    outline: 2px solid var(--destaque);
+    outline-offset: 1px;
+}
+
+.contador {
+    align-self: flex-end;
+    font-size: 13px;
+    color: var(--tinta-suave);
+    margin-top: -4px;
+}
+
+.simbolos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+}
+
+.simbolo {
+    font-size: 24px;
+    aspect-ratio: 1;
+    border-radius: 14px;
+    border: 1px solid var(--borda);
+    background: #FFFCF7;
+    cursor: pointer;
+}
+
+.simbolo.ativo {
+    border: 2px solid var(--destaque);
+    background: #FFF0E4;
+}
+
+.botao {
+    margin-top: 8px;
+    font: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: var(--destaque);
+    border: none;
+    border-radius: 999px;
+    padding: 15px 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(224, 122, 63, .3);
+}
+
+.botao:hover {
+    background: var(--destaque-escuro);
+}
+
+.botao:disabled {
+    opacity: .6;
+}
+
+.botao.secundario {
+    background: transparent;
+    color: var(--destaque);
+    border: 2px solid var(--destaque);
+    box-shadow: none;
+}
+
+.erro {
+    color: #B3261E;
+    font-size: 15px;
+}
+
+.enviado {
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.enviado .grande {
+    font-size: 56px;
+    animation: pulsar 1.6s ease-in-out infinite;
+}
+
+.enviado h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 28px;
+}
+
+.enviado p {
+    color: var(--tinta-suave);
+}
+
+.link-telao {
+    text-align: center;
+    font-size: 13px;
+    color: var(--tinta-suave);
+    opacity: .6;
+}
+
+
+/* ---------------- TELÃO ---------------- */
+
+.telao {
+    position: relative;
+    padding: 44px 56px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.telao-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.telao-topo h1 {
+    font-size: clamp(52px, 5.5vw, 96px);
+}
+
+.telao-topo .kicker {
+    font-size: 18px;
+}
+
+.telao-topo .sub {
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.telao-qr {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    border-radius: 24px;
+    padding: 16px 26px 16px 16px;
+    box-shadow: 0 14px 40px rgba(110, 80, 40, .12);
+    flex-shrink: 0;
+}
+
+.telao-qr img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+}
+
+.qr-texto {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    max-width: 210px;
+    line-height: 1.2;
+}
+
+.contagem {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--destaque);
+}
+
+.mural {
+    columns: 4 280px;
+    column-gap: 22px;
+}
+
+.luz {
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 22px;
+    background: var(--cor);
+    border-radius: 6px 22px 22px 22px;
+    padding: 22px 24px 20px;
+    transform: rotate(var(--giro));
+    box-shadow: 0 10px 24px rgba(110, 80, 40, .12);
+    animation: chegar .8s ease-out both;
+}
+
+.luz-simbolo {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.luz-texto {
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--tinta);
+}
+
+.luz-autor {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--tinta-suave);
+}
+
+.luz-ocultar {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 14px;
+    color: var(--tinta-suave);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.luz:hover .luz-ocultar {
+    opacity: .7;
+}
+
+.vazio {
+    text-align: center;
+    font-size: 26px;
+    color: var(--tinta-suave);
+    padding: 80px 0;
+}
+
+.telao-rodape {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 56px;
+    background: linear-gradient(0deg, var(--fundo), transparent);
+    font-size: 14px;
+    color: var(--tinta-suave);
+    opacity: .45;
+    transition: opacity .2s;
+}
+
+.telao-rodape:hover {
+    opacity: 1;
+}
+
+.botao.pequeno {
+    margin: 0;
+    font-size: 14px;
+    padding: 8px 16px;
+    box-shadow: none;
+}
+
+
+/* ---------------- ANIMAÇÕES ---------------- */
+
+@keyframes chegar {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(.92) rotate(var(--giro));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(var(--giro));
+    }
+}
+
+@keyframes balancar {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+}
+
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .luz,
+    .icone,
+    .enviado .grande {
+        animation: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .telao {
+        padding: 24px 16px 80px;
+    }
+    .telao-topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
